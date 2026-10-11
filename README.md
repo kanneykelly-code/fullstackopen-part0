@@ -34,3 +34,35 @@ sequenceDiagram
 
     Note over browser: Браузер отрисовывает обновленный список заметок на экране
 ```
+
+## Задание 0.5: Single page app diagram
+
+```mermaid
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: GET https://helsinki.fi
+    activate server
+    server-->>browser: HTML-код (базовый шаблон SPA)
+    deactivate server
+
+    browser->>server: GET https://helsinki.fi
+    activate server
+    server-->>browser: Файл стилей main.css
+    deactivate server
+
+    browser->>server: GET https://helsinki.fi.js
+    activate server
+    server-->>browser: Файл скрипта spa.js
+    deactivate server
+
+    Note over browser: Браузер запускает spa.js, который сразу запрашивает чистые данные
+
+    browser->>server: GET https://helsinki.fi
+    activate server
+    server-->>browser: Данные заметок в формате JSON
+    deactivate server
+
+    Note over browser: Скрипт spa.js динамически создает элементы списка и выводит их на экран
+```
