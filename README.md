@@ -66,3 +66,20 @@ sequenceDiagram
 
     Note over browser: Скрипт spa.js динамически создает элементы списка и выводит их на экран
 ```
+
+## Задание 0.6: New note in Single page app diagram
+
+```mermaid
+sequenceDiagram
+    participant browser
+    participant server
+
+    Note over browser: Пользователь пишет текст и нажимает кнопку Save
+
+    Note over browser: JavaScript-код (spa.js) мгновенно добавляет новую заметку в список на экране локально
+
+    browser->>server: POST https://helsinki.fi (данные в формате JSON)
+    activate server
+    server-->>browser: HTTP-статус 201 Created (Успешно создано)
+    deactivate server
+```
